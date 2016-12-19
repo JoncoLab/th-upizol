@@ -1,0 +1,402 @@
+$line: 10px;
+$blue: #0759bc;
+$yellow: #ffd400;
+$background: #c0d6ca;
+$text: #2a5980;
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    background: {
+        color: fade-out($background, 0.1);
+        image: url('../images/Flag.png');
+        size: 50%;
+        position: 100% 10%;
+        repeat: no-repeat;
+        attachment: fixed;
+        blend-mode: overlay;
+    }
+    color: $text;
+    min-width: 1200px;
+    
+    header {
+        position: relative;
+        
+        &.logo {
+            background: {
+                color: $blue;
+                image: url('../images/r.png');
+                size: contain;
+                position: 100%;
+                repeat: no-repeat;
+            }
+            min-height: $line * 10;
+            padding: $line;
+            
+            img {
+                display: block;
+                height: $line * 10;
+            }
+        }
+        
+        &.gallery {
+            padding: $line $line * 5;
+            display: flex;
+            align-items: center;
+            border-bottom: $line / 5 solid $blue;
+            overflow: hidden;
+            position: relative;
+            
+            background: {
+                color: $background;
+            }
+            
+            .arrow {
+	            position: absolute;
+                display: block;
+                height: 100%;
+                width: $line * 5;
+                top: 0;
+                z-index: 5;
+                cursor: pointer;
+                
+                transition: {
+                    duration: 0.15s;
+                    timing-function: linear;
+                }
+                
+                &.prev {
+                    left: 0;
+                    background: {
+                        image: url('../svg/circle-left.svg');
+                    }
+                }
+                
+                &.next {
+                    right: 0;
+                    background: {
+                        image: url('../svg/circle-right.svg');
+                    }
+                }
+                
+                background: {
+                    color: $background;
+                    position: center;
+                    size: 90%;
+                    repeat: no-repeat;
+                }
+                
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+            
+            img {
+                transform-origin: left;
+                transition: {
+                    duration: 0.5s;
+                    timing-function: linear;
+                }
+                
+                margin: $line;
+                width: 18.5%;
+            }
+        }
+    }
+    
+    main {
+        display: flex;
+        width: 100%;
+        
+        article {
+            padding: $line;
+            flex-grow: 1;
+            
+            h2, h3 {
+                text-align: center;
+                background: $blue;
+                color: white;
+                padding: $line;
+                border-radius: $line;
+            }
+            
+            .buttons {
+                display: flex;
+                justify-content: center;
+                
+                button {
+                    text: {
+                        decoration: none;
+                        align:center;
+                    }
+                    padding: $line; 
+                    margin: 0 $line / 5;
+                    border: $line / 10 solid #004F72;
+                    border: {
+                        radius: $line / 2;
+                    }
+                    font: $line * 1.6 Arial, Helvetica, sans-serif; 
+                    font: {
+                        weight: bold;
+                    }
+                    color: #E5FFFF; 
+                    background: {
+                        color: fade-out(#005abb, 0.2);
+                        image: linear-gradient(to bottom, #005abb 0%, #00abbb 100%);
+                    }
+                    box-shadow: 0 0 $line / 5 #bababa, inset 0px 0px $line / 10 #ffffff;
+                
+                    transition: {
+                        duration: 0.15s;
+                        timing-function: linear;
+                    }
+                    
+                    cursor: pointer;
+  
+                    &:hover {
+                        background: {
+                            color: #005abb;
+                            image: none;
+                        }
+                    }
+                    
+                    &:active, 
+                    &:focus {
+                        outline: none;  
+                    }
+                }
+            }
+            
+            &.content {
+                flex-basis: $line * 90;
+                padding: $line $line * 3;
+                border-left: $line / 5 solid $blue;
+                
+                p {
+                    font-size: $line * 2;
+                    &::first-letter {
+                        margin-left: $line;
+                        font-weight: bold;
+                    }
+                }
+                
+                .tab {
+                    
+                    &:not(.about) {
+                        display: none;
+                    }
+                    
+                    &.tech {
+                        
+                        table {
+                            text-align: center;
+                            border-collapse: collapse;
+                            width: 100%;
+                            margin-top: $line * 4;
+                            
+                            caption {
+                                background: $blue;
+                                padding: $line;
+                                color: white;
+                                font: {
+                                    size: $line * 2;
+                                    weight: bold;
+                                }
+                            }
+                            
+                            tr {
+                                td {
+                                    border: $line / 2 solid $blue;
+                                    padding: $line;
+                                    font-weight: bold;
+                                    
+                                    background: {
+                                        color: fade-out(white, 0.5);
+                                    }
+                                    
+                                    &:first-of-type {
+                                        width: 30%;
+                                    }
+                                }
+                            }
+                            
+                            th {
+                                background: {
+                                    color: $blue;
+                                }
+                                border: {
+                                    left: $line / 2 solid $blue;
+                                    right: $line / 2 solid $blue;
+                                    top: $line / 2 solid $yellow;
+                                }
+                                color: white;
+                            }
+                            
+                            &.geometry {
+                                tr {
+                                    td {
+                                        width: auto;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    &.contacts {
+                        width: 100%;
+                        text-align: center;
+                        
+                        .contacts-list {
+                            text-align: center;
+                            list-style: none;
+                            display: inline-block;
+                            margin-right: $line * 2;
+                            font: {
+                                size: $line * 2;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &.docs {
+                flex-basis: $line * 10;
+                max-height: $line * 120;
+                max-width: $line * 20;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-content: center;
+                padding-top: $line * 8;
+                
+                h2 {
+                    position: absolute;
+                    top: 0;
+                    padding: $line 0;
+                    margin: 0;
+                    border-radius: 0;
+                    left: 0;
+                    width: 100%;
+                }
+                
+                .doc {
+                    width: 100%;
+                    transition: {
+                        duration: 0.15s;
+                        timing-function: linear;
+                    }
+                    cursor: pointer;
+                    
+                    &:hover {
+                        box-shadow: 0 0 0 $line / 2 $yellow;
+                    }
+                }
+                
+                .fullscreen {
+                    position: fixed;
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    
+                    transform: scale(0);
+                    opacity: 0;
+                    
+                    background: {
+                        color: fade-out(black, 0.3);
+                    }
+                    
+                    transition: {
+                        duration: 0.5s, 0.2s;
+                        timing-function: linear;
+                        property: transform, opacity;
+                    }
+                    
+                    embed {
+                        display: block;
+                        width: 70%;
+                        height: 100%;
+                        margin: 0 auto;
+                    }
+                    
+                    .hide {
+                        position: absolute;
+                        top: 5%;
+                        right: 5%;
+                        width: $line * 5;
+                        height: $line * 5;
+                        background: {
+                            image: url(../svg/delete-button.svg);
+                            size: contain;
+                            repeat: no-repeat;
+                            position: center;
+                        }
+                        transition: {
+                            duration: 0.1s;
+                            timing-function: ease-in;
+                        }
+                        
+                        &:hover {
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    footer {
+        text-align: right;
+        position: relative;
+        background: {
+            color: $blue;
+            image: url('../images/l.png');
+            size: contain;
+            position: 0;
+            repeat: no-repeat;
+        }
+        
+        .developers {
+	        height: $line * 4;
+            display: block;
+            float: left;
+            text: {
+                align: right;
+                decoration: none;
+            }
+            color: white;
+            margin: $line * 7 0 0 $line * 30;
+            
+            img {
+                height: 100%;
+            }
+        }
+        
+        .contacts {
+            text-align: left;
+            list-style: none;
+            display: inline-block;
+            margin-right: $line * 2;
+            color: white;
+            
+            &::before {
+                content: 'Контактна інформація:';
+                display: inline-block;
+                padding: $line;
+                background: $yellow;
+                border-radius: $line;
+                color: $blue;
+                font-weight: bold;
+            }
+        }
+    }
+}
